@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.test.card.utils.Util"/>
+        <variable
+            name="result"
+            type="com.test.card.model.Result" />
+    </data>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="8dp"
+    app:cardElevation="10dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:src="@drawable/profile"
+            app:civ_border_color="#FF000000"
+            app:imageUrl="@{result.picture.thumbnail}"
+            app:civ_border_width="2dp" />
+
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:text="@string/person_name"
+            app:description="@{Util.INSTANCE.getName(result)}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/colorName" />
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:text="@{Util.INSTANCE.getDescription(result)}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorDescription" />
+
+        <TextView
+            android:padding="8dp"
+            android:visibility="gone"
+            android:id="@+id/statusTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accepted/Declined"
+            android:textColor="@color/colorPrimary"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <LinearLayout
+            android:id="@+id/acceptanceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+
+                android:paddingRight="56dp">
+
+                <ImageView
+                    android:id="@+id/declineImageView"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:src="@drawable/decline" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/decline"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingLeft="56dp">
+
+                <ImageView
+                    android:id="@+id/acceptImageView"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:src="@drawable/accept" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accept"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+</layout>
